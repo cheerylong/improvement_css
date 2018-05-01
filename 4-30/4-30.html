@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+    .container {
+        display: flex;
+        flex-direction: row;
+        transition: all 2s;
+        border: 2px #607D8B solid;
+        padding: 5px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .container .item {
+        width: 100px;
+        height: 30px;
+        background-color: blue;
+        color: red;
+        font-size: 15px;
+        text-align: center;
+        line-height: 30px;
+        border: 1px #ddd solid;
+        cursor: pointer;
+        width: 200px;
+    }
+
+    .item:hover {
+        transform: scale(1.1);
+    }
+
+    .wrap {
+        height: 40px;
+        background-color: #00BCD4;
+        border: 2px #ddd solid;
+        width: 700px;
+        margin: 10px auto;
+        text-align: center;
+        line-height: 40px;
+    }
+
+    .button-wrap {
+        display: inline;
+    }
+
+    .button-wrap button {
+        border-radius: 5px;
+        background: #ece3e3;
+        cursor: pointer;
+        outline: 0;
+    }
+
+    .code-des {
+        color: blue;
+        font-weight: bolder;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container" id="container1">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+    </div>
+    <!-- flex-direction -->
+    <div class="wrap direction-wrap">
+        <label>主轴方向: </label>
+        <div id="direction" class="button-wrap">
+            <button value="row">由右到左</button>
+            <button value="row-reverse">由左到右</button>
+            <button value="column">由上到下</button>
+            <button value="column-reverse">由下往上</button>
+        </div>
+        <span class="code-des">flex-direction: <span id="dirValue">row</span></span>
+    </div>
+    <!-- flex-wrap -->
+    <div class="wrap ">
+        <label>换行情况: </label>
+        <div id="wrap" class="button-wrap">
+            <button value="wrap">换行</button>
+            <button value="nowrap">不换行</button>
+            <button value="wrap-reverse">反向换行(第一行在下方)</button>
+        </div>
+        <span class="code-des">flex-wrap: <span id="wrapValue">wrap</span></span>
+    </div>
+    <!-- justify-content -->
+    <div class="wrap ">
+        <label>主轴对齐: </label>
+        <div id="center" class="button-wrap">
+            <button value="flex-start">左对齐</button>
+            <button value="flex-end">右对齐</button>
+            <button value="center">居中</button>
+            <button value="space-between">两端对齐</button>
+            <button value="space-around">项目两侧的间隔相等</button>
+        </div>
+        <span class="code-des">justify-content: <span id="centerValue">flex-start</span></span>
+    </div>
+
+	<!-- align-items	 -->
+    <div class="wrap ">
+        <label>交叉轴对齐: </label>
+        <div id="center" class="button-wrap">
+            <button value="flex-start">左对齐</button>
+            <button value="flex-end">右对齐</button>
+            <button value="center">居中</button>
+            <button value="space-between">两端对齐</button>
+            <button value="space-around">项目两侧的间隔相等</button>
+        </div>
+        <span class="code-des">justify-content: <span id="centerValue">flex-start</span></span>
+    </div>
+
+    
+    <script type="text/javascript">
+    // flex-direction
+    function initDirChange() {
+        let dirWrap = document.getElementById('direction')
+        let container = document.getElementById('container1')
+        let dirValue = document.getElementById('dirValue')
+        dirWrap.addEventListener('click', function(e) {
+            let btn = e.target
+            let val = e.target.value
+            if (val) {
+                container.style.flexDirection = val;
+                dirValue.innerText = val;
+            }
+        })
+    }
+
+    // flex-wrap
+    function initWrapChange() {
+        let wraps = document.getElementById('wrap')
+        let container = document.getElementById('container1')
+        let wrapValue = document.getElementById('wrapValue')
+        wraps.addEventListener('click', function(e) {
+
+            let btn = e.target
+            let val = e.target.value
+
+            document.querySelector('[value="row"]').click()
+
+            if (val) {
+                container.style.flexWrap = val;
+                wrapValue.innerText = val;
+            }
+        })
+    }
+
+    // justify-content
+    function initJCchange() {
+        let center = document.getElementById('center')
+        let container = document.getElementById('container1')
+        let centerValue = document.getElementById('centerValue')
+        center.addEventListener('click', function(e) {
+
+            let btn = e.target
+            let val = e.target.value
+
+            document.querySelector('[value="row"]').click()
+
+            if (val) {
+                container.style.justifyContent = val;
+                centerValue.innerText = val;
+            }
+        })
+    }
+
+    function initAlignItemsChange() {
+        let center = document.getElementById('center')
+        let container = document.getElementById('container1')
+        let centerValue = document.getElementById('centerValue')
+        center.addEventListener('click', function(e) {
+
+            let btn = e.target
+            let val = e.target.value
+
+            document.querySelector('[value="row"]').click()
+
+            if (val) {
+                container.style.justifyContent = val;
+                centerValue.innerText = val;
+            }
+        })
+    }
+
+
+
+
+
+    initDirChange()
+    initWrapChange()
+    initJCchange()
+    </script>
+</body>
+
+</html>
